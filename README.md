@@ -16,42 +16,36 @@ The script takes a directory path containing log files as an argument, creates a
 1. Clone the repository:
    ```bash
    git clone https://github.com/DragonVV/log-archiver.git
-
-    Navigate to the project directory:
-
-cd log-archiver
-
-Make the script executable:
-
-    chmod +x log_archiver.sh
-
-Usage
-
-To archive logs from a specified directory, run the script with the directory path as an argument:
-
+2. Navigate to the project directory:
+   ```bash
+   cd log-archiver
+3. Make the script executable:
+   ```bash
+   chmod +x log_archiver.sh
+4. Move the script to /usr/local/bin/ for easy running:
+   ```bash
+   sudo mv log_archiver.sh /usr/local/bin/log-archive
+   
+## Usage:
+To archive logs from a specified directory, run the script with the directory path as an argument: 
+```bash
 log-archive /path/to/logs
-
+```
 For example, to archive logs from /var/log:
-
+```bash
 log-archive /var/log
-
-How it Works
+```
+How it Works:
 
     The script takes the directory path (/path/to/logs) as an argument.
-
     It creates a timestamped .tar.gz archive of the contents of the specified directory.
-
     After successfully creating the archive, it verifies that the archive is not empty.
-
     Once the archive is confirmed to be valid, the original log files in the directory are deleted.
-
     The script logs the date and time of the operation to a log file.
 
 License
 
 This project is licensed under the MIT License.
-
-
 This explanation covers:
 - What the script does.
 - How to install and use it.
@@ -77,42 +71,37 @@ This explanation covers:
    ```bash
    git clone https://github.com/DragonVV/log-archiver.git
 
-    Перейдите в директорию проекта:
+2. Перейдите в директорию проекта:
+   ```bash
+   cd log-archiver
 
-cd log-archiver
+3. Сделайте скрипт исполняемым:
+   ```bash
+   chmod +x log_archiver.sh
 
-Сделайте скрипт исполняемым:
+4. Переместите скрипт в /usr/local/bin/ для удобства запуска:
+   ```bash
+   sudo mv log_archiver.sh /usr/local/bin/log-archive
 
-chmod +x log_archiver.sh
-
-Переместите скрипт в /usr/local/bin/ для удобства запуска:
-
-sudo mv log_archiver.sh /usr/local/bin/log-archive
-
-Использование
+## Использование:
 
 Чтобы архивировать логи из указанной директории, выполните скрипт с путём к директории в качестве аргумента:
-
+```bash
 log-archive /path/to/logs
-
+```
 Например, чтобы архивировать логи из /var/log:
-
+```bash
 log-archive /var/log
-
+```
 Как это работает
 
     Скрипт принимает путь к директории (/path/to/logs) как аргумент.
-
     Он создает сжатый архив .tar.gz из содержимого указанной директории.
-
     После успешного создания архива проверяется, что архив не пустой.
-
     Если архив создан успешно, оригинальные файлы логов в директории удаляются.
-
     Скрипт логирует дату и время операции в лог-файл.
 
 Лицензия
-
 Этот проект распространяется под лицензией MIT.
 
 https://roadmap.sh/projects/log-archive-tool
