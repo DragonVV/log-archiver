@@ -1,0 +1,32 @@
+#!/bin/bash
+
+LOG_DIR="$1"
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+ARCHIVE_NAME="/home/logs_archive_${TIMESTAMP}.tar.gz"
+LOG_FILE="/home/log_archive.log"
+
+# Функция для записи лога
+log_message() {
+    echo "[$(date +"%Y-%m-%d %H:%M:%S")] $1" >> "$LOG_FILE"
+}
+
+# Проверяем, передан ли аргумент
+if [ -z "$LOG_DIR" ]; then
+    echo "Использование: log-archive <log-directory>"
+    log_message "Ошибка: не передан каталог для архивации."
+    exit 1
+fi
+
+# Архивируем
+tar -czf "$ARCHIVE_NAME" -C "$LOG_DIR" .
+
+# Проверяем, успешно ли создан архив и не пуст ли он
+if [ $? -eq 0 ] && tar -tf "$ARCHIVE_NAME" >/dev/null 2>&1; then
+    rm -rf "$LOG_DIR"/*
+    echo "Архив создан: $ARCHIVE_NAME"
+    log_message "Успешно: Архив создан $ARCHIVE_NAME, файлы удалены из $LOG_DIR."
+else
+    echo "Ошибка: архив пустой или не создан."
+    log_message "Ошибка: не удалось создать архив из $LOG_DIR."
+    exit 1
+fi
